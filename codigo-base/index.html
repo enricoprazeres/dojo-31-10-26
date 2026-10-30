@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎃 Laboratório de Pixéis Assombrados</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🎃 Laboratório de Pixéis Assombrados 👻</h1>
+    <p>Carrega uma foto e transforma-a com matemática! Cada pixel é só uma lista de números: <code>[R, G, B, A]</code>.</p>
+  </header>
+
+  <main>
+    <section class="painel">
+      <h2>1. Escolhe uma foto</h2>
+      <input type="file" id="escolher-foto" accept="image/*">
+
+      <h2>2. Aplica um filtro</h2>
+      <p class="dica">Dica: também podes usar as teclas <kbd>0</kbd> a <kbd>6</kbd>!</p>
+
+      <div class="botoes">
+        <button data-filtro="0"><kbd>0</kbd> Original</button>
+        <button data-filtro="1"><kbd>1</kbd> Vermelho Sangue</button>
+        <button data-filtro="2"><kbd>2</kbd> Negativo</button>
+        <button data-filtro="3"><kbd>3</kbd> Cinzento Fantasma</button>
+        <button data-filtro="4"><kbd>4</kbd> Troca de Canais</button>
+        <button data-filtro="5"><kbd>5</kbd> Ruído</button>
+        <button data-filtro="6"><kbd>6</kbd> Glitch</button>
+      </div>
+
+      <label class="interruptor">
+        <input type="checkbox" id="acumular">
+        Acumular filtros (aplicar por cima do anterior)
+      </label>
+
+      <h2>3. Guarda o resultado</h2>
+      <button id="descarregar" class="destaque">💾 Descarregar PNG</button>
+
+      <h2>🔍 Inspeção de Pixel</h2>
+      <div class="inspecao">
+        <div id="amostra-cor" class="amostra"></div>
+        <div>
+          <p>Posição: <span id="info-posicao">(–, –)</span></p>
+          <p>Cor: <span id="info-rgb">RGB(–, –, –)</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="area-imagem">
+      <canvas id="tela"></canvas>
+      <p id="mensagem" class="dica">👆 Ainda não há imagem. Escolhe uma foto à esquerda.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>CoderDojo · Halloween · Abre a consola (<kbd>F12</kbd>) para veres mais detalhes!</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

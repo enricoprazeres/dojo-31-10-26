@@ -1,0 +1,163 @@
+/* =========================================================
+   🎃 ESTILO DE HALLOWEEN (Dark Mode)
+   Muda as cores aqui em cima e toda a página muda com elas!
+   ========================================================= */
+:root {
+  --fundo: #121212;        /* fundo da página */
+  --cartao: #1e1e1e;       /* fundo dos painéis */
+  --texto: #f2f2f2;        /* texto principal */
+  --texto-fraco: #a0a0a0;  /* texto secundário */
+  --laranja: #ff6b00;      /* cor de abóbora */
+  --roxo: #b46cff;         /* roxo néon */
+  --verde: #39ff88;        /* verde néon (poção!) */
+}
+
+/* Faz com que padding e border contem dentro da largura */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+/* ---------- Cabeçalho ---------- */
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  color: var(--laranja);
+  margin-bottom: 4px;
+  text-shadow: 0 0 12px rgba(255, 107, 0, 0.5); /* brilho laranja */
+}
+
+h2 {
+  color: var(--roxo);
+  font-size: 1.1rem;
+  margin: 20px 0 8px;
+}
+
+code,
+kbd {
+  background: #2a2a2a;
+  color: var(--verde);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ---------- Layout: painel à esquerda, imagem à direita ---------- */
+main {
+  display: flex;
+  flex-wrap: wrap;   /* em ecrãs pequenos, um fica por baixo do outro */
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.painel {
+  flex: 0 1 320px;
+  background: var(--cartao);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.area-imagem {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+/* ---------- Botões ---------- */
+.botoes {
+  display: grid;
+  gap: 8px;
+}
+
+button {
+  background: #2a2a2a;
+  color: var(--texto);
+  border: 1px solid var(--laranja);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+  background: var(--laranja);
+  color: #000;
+}
+
+button.destaque {
+  width: 100%;
+  border-color: var(--verde);
+}
+
+button.destaque:hover,
+button.destaque:focus-visible {
+  background: var(--verde);
+}
+
+.interruptor {
+  display: block;
+  margin-top: 12px;
+  color: var(--texto-fraco);
+  cursor: pointer;
+}
+
+.dica {
+  color: var(--texto-fraco);
+  font-size: 0.9rem;
+}
+
+/* ---------- Inspeção de Pixel ---------- */
+.inspecao {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-family: monospace;
+}
+
+.inspecao p {
+  margin: 2px 0;
+}
+
+.amostra {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--roxo);
+  border-radius: 8px;
+  background: #000;
+  flex-shrink: 0;
+}
+
+/* ---------- Canvas (a tela da imagem) ---------- */
+canvas {
+  max-width: 100%;        /* encolhe para caber no ecrã (os pixéis reais não mudam) */
+  border: 2px solid var(--laranja);
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(180, 108, 255, 0.3); /* brilho roxo */
+  cursor: crosshair;
+  display: none;          /* escondido até haver imagem */
+}
+
+canvas.visivel {
+  display: inline-block;
+}
+
+/* ---------- Rodapé ---------- */
+footer {
+  text-align: center;
+  margin-top: 32px;
+  color: var(--texto-fraco);
+  font-size: 0.85rem;
+}

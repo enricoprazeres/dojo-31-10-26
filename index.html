@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎃 Laboratório de Pixéis Assombrados</title>
+  <!-- Ligação à folha de estilos (as cores e o aspeto da página) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🎃 Laboratório de Pixéis Assombrados 👻</h1>
+    <p>Carrega uma foto e transforma-a com matemática! Cada pixel é só uma lista de números: <code>[R, G, B, A]</code>.</p>
+  </header>
+
+  <main>
+    <!-- PAINEL DE CONTROLO: escolher a foto e aplicar filtros -->
+    <section class="painel">
+      <h2>1. Escolhe uma foto</h2>
+      <!-- O "accept" só deixa escolher ficheiros de imagem -->
+      <input type="file" id="escolher-foto" accept="image/*">
+
+      <h2>2. Aplica um filtro</h2>
+      <p class="dica">Dica: também podes usar as teclas <kbd>0</kbd> a <kbd>6</kbd>!</p>
+
+      <!-- O atributo data-filtro diz ao JavaScript qual o filtro de cada botão -->
+      <div class="botoes">
+        <button data-filtro="0"><kbd>0</kbd> Original</button>
+        <button data-filtro="1"><kbd>1</kbd> Vermelho Sangue</button>
+        <button data-filtro="2"><kbd>2</kbd> Negativo</button>
+        <button data-filtro="3"><kbd>3</kbd> Cinzento Fantasma</button>
+        <button data-filtro="4"><kbd>4</kbd> Troca de Canais</button>
+        <button data-filtro="5"><kbd>5</kbd> Ruído</button>
+        <button data-filtro="6"><kbd>6</kbd> Glitch</button>
+      </div>
+
+      <!-- Se estiver ligado, cada filtro é aplicado por cima do anterior -->
+      <label class="interruptor">
+        <input type="checkbox" id="acumular">
+        Acumular filtros (aplicar por cima do anterior)
+      </label>
+
+      <h2>3. Guarda o resultado</h2>
+      <button id="descarregar" class="destaque">💾 Descarregar PNG</button>
+
+      <!-- INSPEÇÃO DE PIXEL: mostra o pixel que está debaixo do rato -->
+      <h2>🔍 Inspeção de Pixel</h2>
+      <div class="inspecao">
+        <div id="amostra-cor" class="amostra"></div>
+        <div>
+          <p>Posição: <span id="info-posicao">(–, –)</span></p>
+          <p>Cor: <span id="info-rgb">RGB(–, –, –)</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÁREA DA IMAGEM: o canvas é a "tela" onde desenhamos os pixéis -->
+    <section class="area-imagem">
+      <canvas id="tela"></canvas>
+      <p id="mensagem" class="dica">👆 Ainda não há imagem. Escolhe uma foto à esquerda.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>CoderDojo · Halloween · Abre a consola (<kbd>F12</kbd>) para veres mais detalhes!</p>
+  </footer>
+
+  <!-- O JavaScript fica no fim para a página já estar carregada quando ele corre -->
+  <script src="script.js"></script>
+</body>
+</html>
