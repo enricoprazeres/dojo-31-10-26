@@ -162,6 +162,38 @@ for (let y = 0; y < altura; y++) {
 
 **Explicar o `%`:** é o resto da divisão, como um relógio: depois das 12 volta à 1. Numa linha de 100 pixels, a coluna 105 volta a ser a 5. O `+ largura` serve para números negativos: em JavaScript, `-5 % 100` dá -5, não 95.
 
+## Tirar coisas do HTML para os ninjas fazerem
+
+Podes apagar elementos do `codigo-base/index.html`, mas o ninja tem de os voltar a criar com **exatamente o mesmo `id`**. O `script.js` encontra cada elemento pelo `id`. Se não o encontrar, dá erro e o código que vem a seguir deixa de correr.
+
+| O que tirar | O que o ninja escreve | Se faltar ou o `id` estiver mal escrito |
+| --- | --- | --- |
+| Textos (`<h1>`, `<h2>`, `<p>`) | Os títulos e textos que quiser | Nada parte |
+| Os 7 botões dentro de `<div class="botoes">` | `<button data-filtro="1">Vermelho</button>` (números 0 a 6) | Nada parte. As teclas 0–6 continuam a funcionar |
+| Caixa de acumular | `<input type="checkbox" id="acumular">` | Os filtros 1–6 dão erro ao carregar no botão |
+| Botão de download | `<button id="descarregar">Descarregar</button>` | O inspetor de pixel deixa de funcionar (vem depois no código) |
+| Inspetor de pixel | `<div id="amostra-cor" class="amostra"></div>`, `<span id="info-posicao"></span>` e `<span id="info-rgb"></span>` | Erro sempre que o rato passa na imagem. O resto funciona |
+| Mensagem | `<p id="mensagem"></p>` | A imagem aparece, mas a consola não mostra a largura, a altura nem o pixel (0, 0) |
+| Escolher ficheiro | `<input type="file" id="escolher-foto" accept="image/*">` | **Nada funciona** |
+| Canvas | `<canvas id="tela"></canvas>` | **Nada funciona** |
+
+A tabela vai do mais fácil (nada parte) ao mais arriscado (nada funciona).
+
+### Níveis sugeridos
+
+1. **Nível 1 (recomendado para 14 anos):** tirar os textos e os 7 botões. É seguro, porque a página funciona pelo teclado enquanto eles fazem os botões.
+2. **Nível 2:** tirar também a caixa de acumular, o botão de download e o inspetor.
+3. **Nível 3:** deixar o `<body>` só com `<script src="script.js"></script>`. Escrever no quadro a lista dos `id`: `escolher-foto`, `tela`, `acumular`, `mensagem`, `descarregar`, `amostra-cor`, `info-posicao`, `info-rgb`.
+
+### Regras para dizer aos ninjas
+
+- O `<script src="script.js">` fica sempre **no fim do `<body>`**, depois dos elementos que criarem. Se ficar antes, o JavaScript procura elementos que ainda não existem.
+- Não mexer no `<link rel="stylesheet">` do `<head>`.
+- As classes (`class="botoes"`, `class="destaque"`, `class="amostra"`…) só mudam o aspeto. Sem elas fica feio, mas funciona.
+- Não é preciso mexer no CSS do canvas: ele começa escondido e o JavaScript mostra-o quando a foto carrega.
+
+**Erro típico na consola:** `Cannot read properties of null (reading 'addEventListener')` ou `(reading 'checked')`. Quer dizer que falta um elemento ou que o `id` está mal escrito. A linha indicada na consola mostra qual.
+
 ## Problemas comuns
 
 Primeiro passo em quase todos os casos: abrir a consola (F12) e ler o erro a vermelho com o ninja.
